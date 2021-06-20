@@ -129,7 +129,15 @@ namespace CourierKataTests
         {
             FixedDeliveryCostCalculator costCalculator = new FixedDeliveryCostCalculator();
             double cost = costCalculator.GetCost(new Parcel { Length = 0, Width = 0, Depth = 100, Weight = 10.1 });
-            Assert.AreEqual(35,1, cost);
+            Assert.AreEqual(35, 1, cost);
+        }
+
+        [TestMethod]
+        public void LargestHeavyOverweight()
+        {
+            FixedDeliveryCostCalculator costCalculator = new FixedDeliveryCostCalculator();
+            double cost = costCalculator.GetCost(new Parcel { Length = 0, Width = 0, Depth = 100, Weight = 50 });
+            Assert.AreEqual(125, 1, cost);
         }
     }
 }
