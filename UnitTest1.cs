@@ -70,6 +70,34 @@ namespace CourierKataTests
 
             double cost = order.Cost;
             Assert.AreEqual(28, cost);
+            Assert.AreEqual(3, order.Parcels[0].Cost);
+            Assert.AreEqual(25, order.Parcels[1].Cost);
+        }
+
+        [TestMethod]
+        public void OrderCostSpeedy()
+        {
+            Order order = new Order { Speedy = true };
+            order.Parcels = new List<Parcel>
+            {
+                new Parcel
+                {
+                    Length = 5,
+                    Width = 5,
+                    Depth = 5
+                },
+                new Parcel
+                {
+                    Length = 100,
+                    Width = 100,
+                    Depth = 100
+                }
+            };
+
+            double cost = order.Cost;
+            Assert.AreEqual(56, cost);
+            Assert.AreEqual(3, order.Parcels[0].Cost);
+            Assert.AreEqual(25, order.Parcels[1].Cost);
         }
     }
 }

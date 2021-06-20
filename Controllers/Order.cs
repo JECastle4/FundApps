@@ -2,8 +2,9 @@
 
 namespace FundApps.Controllers
 {
-    public class Order
+    public class Order        
     {
+        public bool Speedy { get; set; }
         public IList<Parcel> Parcels { get; set; }
         public double Cost 
         {
@@ -14,6 +15,10 @@ namespace FundApps.Controllers
                 {
                     orderCost += parcel.Cost;
                 }
+
+                if (Speedy)
+                    orderCost *= 2;
+
                 return orderCost;
             }
         }
