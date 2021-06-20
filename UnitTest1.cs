@@ -105,7 +105,7 @@ namespace CourierKataTests
         {
             FixedDeliveryCostCalculator costCalculator = new FixedDeliveryCostCalculator();
             double cost = costCalculator.GetCost(new Parcel { Length = 0, Width = 0, Depth = 0, Weight = 1.1 });
-            Assert.AreEqual(5.2, cost);
+            Assert.AreEqual(4.1, cost);
         }
 
         [TestMethod]
@@ -113,7 +113,7 @@ namespace CourierKataTests
         {
             FixedDeliveryCostCalculator costCalculator = new FixedDeliveryCostCalculator();
             double cost = costCalculator.GetCost(new Parcel { Length = 10, Width = 0, Depth = 0, Weight = 3.1 });
-            Assert.AreEqual(14.2, cost);
+            Assert.AreEqual(11.1, cost);
         }
 
         [TestMethod]
@@ -121,7 +121,7 @@ namespace CourierKataTests
         {
             FixedDeliveryCostCalculator costCalculator = new FixedDeliveryCostCalculator();
             double cost = costCalculator.GetCost(new Parcel { Length = 0, Width = 50, Depth = 0, Weight = 6.1 });
-            Assert.AreEqual(27.2, cost);
+            Assert.AreEqual(21.1, cost);
         }
 
         [TestMethod]
@@ -129,7 +129,7 @@ namespace CourierKataTests
         {
             FixedDeliveryCostCalculator costCalculator = new FixedDeliveryCostCalculator();
             double cost = costCalculator.GetCost(new Parcel { Length = 0, Width = 0, Depth = 100, Weight = 10.1 });
-            Assert.AreEqual(45.2, cost);
+            Assert.AreEqual(35,1, cost);
         }
     }
 }
