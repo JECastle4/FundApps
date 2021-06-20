@@ -12,7 +12,7 @@ namespace CourierKataTests
         public void Smallest()
         {
             FixedDeliveryCostCalculator costCalculator = new FixedDeliveryCostCalculator();
-            double cost = costCalculator.GetCost(0, 0, 0);
+            double cost = costCalculator.GetCost(new Parcel { Length = 0, Width = 0, Depth = 0 });
             Assert.AreEqual(3, cost);
         }
 
@@ -21,14 +21,14 @@ namespace CourierKataTests
         public void Exception()
         {
             FixedDeliveryCostCalculator costCalculator = new FixedDeliveryCostCalculator();
-            double cost = costCalculator.GetCost(-1, 0, 0);
+            double cost = costCalculator.GetCost(new Parcel { Length = -1, Width = 0, Depth = 0 });
         }
 
         [TestMethod]
         public void Medium()
         {
             FixedDeliveryCostCalculator costCalculator = new FixedDeliveryCostCalculator();
-            double cost = costCalculator.GetCost(10, 0, 0);
+            double cost = costCalculator.GetCost(new Parcel { Length = 10, Width = 0, Depth = 0 });
             Assert.AreEqual(8, cost);
         }
 
@@ -36,7 +36,7 @@ namespace CourierKataTests
         public void Large()
         {
             FixedDeliveryCostCalculator costCalculator = new FixedDeliveryCostCalculator();
-            double cost = costCalculator.GetCost(0, 50, 0);
+            double cost = costCalculator.GetCost(new Parcel { Length = 0, Width = 50, Depth = 0 });
             Assert.AreEqual(15, cost);
         }
 
@@ -44,7 +44,7 @@ namespace CourierKataTests
         public void Largest()
         {
             FixedDeliveryCostCalculator costCalculator = new FixedDeliveryCostCalculator();
-            double cost = costCalculator.GetCost(0, 0, 100);
+            double cost = costCalculator.GetCost(new Parcel { Length = 0, Width = 0, Depth = 100 });
             Assert.AreEqual(25, cost);
         }
 
@@ -98,6 +98,38 @@ namespace CourierKataTests
             Assert.AreEqual(56, cost);
             Assert.AreEqual(3, order.Parcels[0].Cost);
             Assert.AreEqual(25, order.Parcels[1].Cost);
+        }
+
+        [TestMethod]
+        public void SmallestOverweight()
+        {
+            FixedDeliveryCostCalculator costCalculator = new FixedDeliveryCostCalculator();
+            double cost = costCalculator.GetCost(new Parcel { Length = 0, Width = 0, Depth = 0, Weight = 1.1 });
+            Assert.AreEqual(5.2, cost);
+        }
+
+        [TestMethod]
+        public void MediumOverweight()
+        {
+            FixedDeliveryCostCalculator costCalculator = new FixedDeliveryCostCalculator();
+            double cost = costCalculator.GetCost(new Parcel { Length = 10, Width = 0, Depth = 0, Weight = 3.1 });
+            Assert.AreEqual(14.2, cost);
+        }
+
+        [TestMethod]
+        public void LargeOverweight()
+        {
+            FixedDeliveryCostCalculator costCalculator = new FixedDeliveryCostCalculator();
+            double cost = costCalculator.GetCost(new Parcel { Length = 0, Width = 50, Depth = 0, Weight = 6.1 });
+            Assert.AreEqual(27.2, cost);
+        }
+
+        [TestMethod]
+        public void LargestOverweight()
+        {
+            FixedDeliveryCostCalculator costCalculator = new FixedDeliveryCostCalculator();
+            double cost = costCalculator.GetCost(new Parcel { Length = 0, Width = 0, Depth = 100, Weight = 10.1 });
+            Assert.AreEqual(45.2, cost);
         }
     }
 }

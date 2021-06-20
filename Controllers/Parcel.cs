@@ -5,12 +5,13 @@
         public double Length { get; set; }
         public double Width { get; set; }
         public double Depth { get; set; }
+        public double Weight { get; set; }
         public double Cost 
         { 
             get
             {
                 FixedDeliveryCostCalculator costCalculator = new FixedDeliveryCostCalculator();
-                return costCalculator.GetCost(Length, Width, Depth);
+                return costCalculator.GetCost(this);
             } 
         }
     }
