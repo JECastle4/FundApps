@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using FundApps.Controllers;
 
@@ -20,7 +21,7 @@ namespace CourierKataTests
         public void Exception()
         {
             FixedDeliveryCostCalculator costCalculator = new FixedDeliveryCostCalculator();
-            double cost = costCalculator.GetCost(-1, 0, 0);            
+            double cost = costCalculator.GetCost(-1, 0, 0);
         }
 
         [TestMethod]
@@ -45,6 +46,30 @@ namespace CourierKataTests
             FixedDeliveryCostCalculator costCalculator = new FixedDeliveryCostCalculator();
             double cost = costCalculator.GetCost(0, 0, 100);
             Assert.AreEqual(25, cost);
+        }
+
+        [TestMethod]
+        public void OrderCost()
+        {
+            Order order = new Order();
+            order.Parcels = new List<Parcel>
+            {
+                new Parcel
+                {
+                    Length = 5,
+                    Width = 5,
+                    Depth = 5
+                },
+                new Parcel
+                {
+                    Length = 100,
+                    Width = 100,
+                    Depth = 100
+                }
+            };
+
+            double cost = order.Cost;
+            Assert.AreEqual(28, cost);
         }
     }
 }
