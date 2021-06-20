@@ -9,7 +9,8 @@ namespace FundApps.Controllers
         [HttpGet]
         public double Get(double length, double width, double depth)
         {
-            return 0;
+            FixedDeliveryCostCalculator costCalculator = new FixedDeliveryCostCalculator();
+            return costCalculator.GetCost(length, width, depth);
         }
     }
 }

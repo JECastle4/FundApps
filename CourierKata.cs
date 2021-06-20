@@ -4,6 +4,7 @@
     {
         public double Length { get; set; }
         public double Width { get; set; }
-        public double Deptth { get; set; }
+        public double Depth { get; set; }
+        public double Cost { get; set; }
     }
 }
